@@ -1,0 +1,46 @@
+/* tokens.css — the design system
+   Colors, and nothing else that isn't a token. Change a value here and
+   it changes everywhere. Three blocks: light (default), system-dark, and
+   explicit-dark. Always edit all three or the themes drift apart.
+   ------------------------------------------------------------------ */
+
+  :root {
+    --paper:   #F8F5F3;
+    --panel:   #FEFDFC;
+    --sunk:    #F0EAE7;
+    --ink:     #241C22;
+    --muted:   #6B5C62;
+    --faint:   #9A8B90;
+    --rule:    #E6DDD9;
+    --rule-hi: #D2C5C0;
+
+    --s1: #8E2F55;   /* plum   */
+    --s2: #0F6CA8;   /* blue   */
+    --s3: #A87213;   /* brass  */
+    --wash: #F6E9EE;
+
+    /* sequential ramp, light → dark */
+    --q1:#F6E9EE; --q2:#EBC9D7; --q3:#DBA3BB; --q4:#C7799C; --q5:#AC4F78; --q6:#8E2F55;
+    /* diverging: plum ← neutral → blue */
+    --d1:#8E2F55; --d2:#C98AA4; --dm:#DFD8D5; --d4:#7FAACE; --d5:#0F6CA8;
+
+    --shadow: 0 1px 2px rgba(36,28,34,.06), 0 6px 18px rgba(36,28,34,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#171317; --panel:#1F1A1E; --sunk:#131015; --ink:#F0E8EA;
+      --muted:#A8989E; --faint:#7D6E74; --rule:#2E2730; --rule-hi:#453B43;
+      --s1:#C9658F; --s2:#3D9BC9; --s3:#B3831F; --wash:#2A1C24;
+      --q1:#241A20; --q2:#3D2731; --q3:#5E3949; --q4:#875065; --q5:#AC6B84; --q6:#D093AB;
+      --d1:#C9658F; --d2:#8E5A70; --dm:#3A343A; --d4:#37718F; --d5:#3D9BC9;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#171317; --panel:#1F1A1E; --sunk:#131015; --ink:#F0E8EA;
+    --muted:#A8989E; --faint:#7D6E74; --rule:#2E2730; --rule-hi:#453B43;
+    --s1:#C9658F; --s2:#3D9BC9; --s3:#B3831F; --wash:#2A1C24;
+    --q1:#241A20; --q2:#3D2731; --q3:#5E3949; --q4:#875065; --q5:#AC6B84; --q6:#D093AB;
+    --d1:#C9658F; --d2:#8E5A70; --dm:#3A343A; --d4:#37718F; --d5:#3D9BC9;
+    --shadow: none;
+  }
