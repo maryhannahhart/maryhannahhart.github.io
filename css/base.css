@@ -1,0 +1,46 @@
+/* base.css â€” reset, page frame, typography
+   Element defaults and the page's structural rules. Fonts are declared
+   here; the families themselves are loaded in index.html <head>.
+   ------------------------------------------------------------------ */
+/* ---- reset ---- */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+:root {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html:focus-within { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html:focus-within { scroll-behavior: auto; } }
+
+/* ---- page frame and type ---- */
+* { box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Karla", -apple-system, system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 22px; }
+
+h1, h2, h3, .ff { font-family: "Fraunces", Georgia, serif; font-variation-settings: "SOFT" 0, "WONK" 0; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+/* â”€â”€ sections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+section { padding-block: 56px; }
+.sechead {
+  display: flex; align-items: baseline; gap: 14px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 13px; margin-bottom: 34px;
+}
+.sechead h2 { font-weight: 600; font-size: 23px; letter-spacing: -0.018em; margin: 0; }
+.sechead .count { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; color: var(--faint); margin-left: auto; }
+.intro { margin: -12px 0 28px; color: var(--muted); max-width: 66ch; font-size: 16px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
