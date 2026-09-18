@@ -334,12 +334,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <p class="brand">Mary Hannah Hart</p>
     <ul class="topnav">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#visuals">Visuals</a></li>
-      <li><a href="#pipeline">Method</a></li>
-      <li><a href="#cv">R&eacute;sum&eacute;</a></li>
-      <li><a href="#certs">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a id="nav-work" btnlocation = "topbar" href="#work">Work</a></li>
+      <li><a id="nav-visuals" btnlocation = "topbar"  href="#visuals">Visuals</a></li>
+      <li><a id="nav-pipeline" btnlocation = "topbar"  href="#pipeline">Method</a></li>
+      <li><a id="nav-cv" btnlocation = "topbar"  href="#cv">R&eacute;sum&eacute;</a></li>
+      <li><a id="nav-certs" btnlocation = "topbar"  href="#certs">Certifications</a></li>
+      <li><a id="nav-contact" btnlocation = "topbar"  href="#contact">Contact</a></li>
     </ul>
   </div>
 </div>
@@ -348,16 +348,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <header class="hero">
     <p class="eyebrow">Data Analyst &middot; Madrid</p>
-    <h1>I build the pipelines, models, and reporting that teams run on.</h1>
+    <h1>I build the what your team teams run on.</h1>
     <p class="lede">
       Six years across energy, retail, and e-commerce. My work sits between source systems and the
-      people who depend on them: <strong>moving data on a schedule, making it reliable, and
-      documenting it well enough that the next analyst doesn't have to ask me how it works.</strong>
+      people who depend on them: <strong>moving data</strong> on a schedule, making it reliable, and
+      <strong>documenting</strong> it well enough that the next analyst doesn't have to ask me how it works.
     </p>
     <div class="herolinks">
-      <a class="btn primary" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
-      <a class="btn" href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a>
-      <a class="btn" href="#cv">R&eacute;sum&eacute;</a>
+      <a class="btn primary" id="cta-email" btnlocation = "hero" href="mailto:maryhannahhart12@gmail.com">
+        maryhannahhart12@gmail.com
+      </a>
+      <a class="btn" id="cta-linked-in" btnlocation = "hero" href="https://www.linkedin.com/in/mary-hannah-hart"">
+        LinkedIn
+      </a>
+      <a class="btn" id="cta-resume" btnlocation = "hero" href="#cv">R&eacute;sum&eacute;</a>
     </div>
 
     <div class="strip">
@@ -588,7 +592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="herolinks" style="margin-top:28px">
-      <a class="btn primary" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request">Request the full r&eacute;sum&eacute;</a>
+      <a class="btn primary" id="cta-request-resume" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request">Request the full r&eacute;sum&eacute;</a>
     </div>
   </section>
 
@@ -631,9 +635,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>I am looking for work where the data platform is treated as core infrastructure rather than a
     reporting afterthought, and where getting the numbers right matters.</p>
     <div class="contactlinks">
-      <a class="btn primary" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
-      <a class="btn" href="https://www.linkedin.com/in/mary-hannah-hart">linkedin.com/in/mary-hannah-hart</a>
-      <a class="btn" href="tel:+34686696640">+34 686 696 640</a>
+      <a class="btn primary" id="cta-email"  btnlocation = "contactlinks" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
+      <a class="btn"
+      id="cta-linked-in"
+      data-btn-location="contactlinks"
+      href="https://www.linkedin.com/in/mary-hannah-hart"
+      target="_blank"
+      rel="noopener">linkedin.com/in/mary-hannah-hart</a>
     </div>
   </footer>
 
