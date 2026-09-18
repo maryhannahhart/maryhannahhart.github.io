@@ -10,6 +10,32 @@
 <meta property="og:type" content="website">
 <title>Mary Hannah Hart Portfolio</title>
 
+<!-- Consent Mode v2 defaults.
+     This MUST stay inline and MUST stay above the GTM snippet: the defaults
+     have to be registered before the container loads, or tags fire once
+     before the visitor has chosen. The banner UI lives in js/consent.js. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('consent', 'default', {
+    ad_storage:            'denied',
+    ad_user_data:          'denied',
+    ad_personalization:    'denied',
+    analytics_storage:     'denied',
+    functionality_storage: 'granted',
+    security_storage:      'granted',
+    wait_for_update:       500
+  });
+
+  // Re-apply a previous visitor's choice before the container loads.
+  try {
+    if (localStorage.getItem('mhh_consent') === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) {}
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -343,11 +369,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       target="_blank"
       rel="noopener">linkedin.com/in/mary-hannah-hart</a>
     </div>
+    <p class="consent-reopen-wrap">
+      <button type="button" class="consent-link" id="consent-reopen">Cookie settings</button>
+    </p>
   </footer>
 
 </div>
+
+<div class="consent" id="consent-bar" role="region" aria-label="Analytics consent" hidden>
+  <p>I use Google Analytics to see which sections of this site get read. No advertising, and nothing is sold or shared.</p>
+  <div class="consent-actions">
+    <button type="button" class="cbtn" id="consent-decline">Decline</button>
+    <button type="button" class="cbtn primary" id="consent-accept">Allow analytics</button>
+  </div>
+</div>
+
 <script src="js/charts.js"></script>
 <script src="js/site.js"></script>
+<script src="js/consent.js"></script>
 <script src="js/analytics.js"></script>
 </body>
 </html>

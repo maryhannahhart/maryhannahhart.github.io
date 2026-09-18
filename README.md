@@ -56,7 +56,15 @@ build. Upload it, and it works.
 edit goes wrong, GitHub keeps every previous version under the **History**
 button, and you can restore any of them.
 
-=
+---
+
+## A custom domain (optional)
+
+If you ever buy a domain (around $12/year), you can point it at this site in
+**Settings → Pages → Custom domain**. `maryhannahhart.com` reads better on an
+application than a `github.io` address, but it is not required.
+
+---
 
 ## Before you send the link
 

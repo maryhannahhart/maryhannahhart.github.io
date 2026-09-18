@@ -11,12 +11,14 @@ css/base.css        reset, page frame, typography
 css/components.css  buttons, nav, cards, figures, tables
 js/charts.js        chart rendering + chart data
 js/site.js          page behavior (link targets, UI)
+js/consent.js       consent banner (defaults are inline in index.html)
 js/analytics.js     dataLayer events — the measurement contract
 ```
 
 Load order matters in two places. `tokens.css` must come before the other two,
 because they consume its variables. `charts.js` must come before `analytics.js`,
-because chart interaction tracking binds to rendered figures.
+because chart interaction tracking binds to rendered figures. And the inline
+consent defaults must come before the GTM snippet — see Consent below.
 
 ---
 
@@ -132,13 +134,42 @@ broken.
 
 ---
 
-## Known gap: consent
+## Consent
 
-The GTM container currently loads with no Consent Mode defaults and there is no
-consent banner, so analytics cookies are set before any visitor has agreed.
-For a public site serving EU and UK visitors that is a compliance gap, not a
-styling preference. Fixing it means Consent Mode v2 defaults declared before
-the GTM snippet, plus a banner that flips `analytics_storage` on acceptance.
+Analytics is off until a visitor agrees. Three pieces, in three places:
+
+| Piece | Lives in | Why there |
+|---|---|---|
+| Consent Mode v2 defaults | inline in `index.html` `<head>` | must execute **before** the GTM snippet |
+| Banner markup | `index.html`, end of `<body>` | in the DOM at load, so it cannot flash in |
+| Banner styling | `css/components.css` | `.consent`, `.cbtn`, `.consent-link` |
+| Banner logic | `js/consent.js` | show, decide, store, withdraw |
+
+**The ordering rule.** The defaults block must stay inline and must stay above
+the GTM snippet. Move it into an external file, or below the container, and
+tags fire once before the visitor has chosen — which is the exact thing the
+banner exists to prevent. It is the only inline script on the page, and the
+comment above it says so.
+
+Everything defaults to `denied` except `functionality_storage` and
+`security_storage`. `wait_for_update: 500` gives the visitor half a second of
+grace before GTM stops holding tags.
+
+The choice is stored in `localStorage` under `mhh_consent`. That key appears in
+two files — the inline block and `consent.js` — so change both together.
+
+**Withdrawal.** The "Cookie settings" button in the footer clears the stored
+choice and brings the banner back. Under GDPR, withdrawing consent has to be as
+easy as giving it, so this is a requirement rather than a courtesy.
+
+**In GTM:** turn on Admin → Container Settings → *Enable consent overview*,
+then set every tag's Advanced Settings → Consent Settings → *Require additional
+consent* to `analytics_storage`. Without that, the defaults hold tags but
+nothing enforces it per tag.
+
+**Testing it.** Use an incognito window, or delete the `mhh_consent` key in
+DevTools → Application → Local Storage. On decline, confirm in the Network tab
+that no request reaches `google-analytics.com/g/collect`.
 
 ## Local development
 
