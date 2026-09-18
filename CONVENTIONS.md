@@ -22,6 +22,20 @@ consent defaults must come before the GTM snippet — see Consent below.
 
 ---
 
+## Layout
+
+The page is a fixed rail plus a scrolling panel: `.shell` is a flex row,
+`.rail` is `position: sticky; height: 100vh`, and `.panel` takes the rest.
+Below 860px the rail folds into a bar above the content.
+
+Selected work is a two-up card grid. **The grid lives on `#work` itself** —
+there is no inner wrapper element, and `.sechead` spans both columns with
+`grid-column: 1 / -1`. Below 1000px it collapses to one column.
+
+Every `1fr` grid track here is written `minmax(0, 1fr)`. A bare `1fr` floors at
+min-content, which let the résumé grid push the page 324px wider than the
+viewport on a phone. If you add a grid, use `minmax(0, 1fr)`.
+
 ## Colors
 
 Every color is a CSS variable in `tokens.css`. Nothing else should contain a
@@ -87,50 +101,57 @@ if two things are both primary, neither is.
 
 ## Event naming
 
-Defined once in `js/analytics.js`, in the `EVENTS` and `PARAMS` objects. GTM
-triggers are built against those exact strings, so renaming one without
-updating the container breaks the tag silently.
+The page pushes **one** event: `chart_interact`. Everything else is triggered
+in GTM from the DOM, which is why the markup carries `id` and
+`data-btn-location` attributes.
 
-**Events** are `lower_snake_case`, object then verb: `section_view`,
-`chart_interact`, `outbound_click`. Not `clickResumeButton`.
+**The dividing line:** if GTM can see it in the DOM, GTM triggers it. If it
+needs something only the page knows — a hover, an element's own title, internal
+state — the page pushes it. Duplicating a GTM-triggerable event in code means a
+deploy every time a trigger changes, which is the thing GTM exists to avoid.
 
-**Parameters** are `lower_snake_case` nouns. Reuse before inventing — every new
-parameter costs a custom dimension registration in GA4, and unregistered
-parameters show as `(not set)` with no backfill.
+| Signal | Where it's handled |
+|---|---|
+| `chart_interact` | `js/analytics.js` — no hover trigger exists in GTM |
+| `consent_update` | `js/consent.js` |
+| Page view | GTM — Google Tag on Initialization / All Pages |
+| Scroll depth | GTM — built-in Scroll Depth trigger, 25/50/75/100 |
+| Button clicks | GTM — Click trigger on `{{Click ID}}` or `data-btn-location` |
+| Outbound links | GTM — Just Links, Click URL doesn't contain the hostname |
+| Nav clicks | GTM — Just Links, Click URL contains `#` |
 
-| Event | Fires when | Parameters |
-|---|---|---|
-| `portfolio_ready` | page load | `color_scheme`, `viewport_bucket` |
-| `section_view` | a section crosses mid-viewport | `section_name` |
-| `chart_interact` | first hover on a chart | `chart_id`, `chart_name` |
-| `scroll_depth` | 25 / 50 / 75 / 100% | `percent_scrolled` |
-| `cta_click` | a non-nav, non-external link | `cta_id`, `btn_location`, `link_text` |
-| `outbound_click` | link to another domain | `link_url`, `link_domain`, + above |
-| `nav_click` | in-page anchor | `cta_id`, `btn_location`, `link_text` |
+### Naming rules
+
+**Events** are `lower_snake_case`, object then verb: `chart_interact`, not
+`hoverChartEvent`. **Parameters** are `lower_snake_case` nouns. Reuse an
+existing parameter before inventing one — each new one costs a custom dimension
+registration in GA4, and unregistered parameters report as `(not set)` with no
+backfill.
+
+`chart_interact` sends `chart_id` (the svg's id, e.g. `c3`) and `chart_name`
+(the figure's visible title). It fires once per chart per page: the useful
+signal is whether a chart was engaged with at all, not how many times the
+pointer crossed it.
 
 **Never send:** email addresses, phone numbers, anything a visitor typed, or
-anything that identifies a person. This is a public page; assume anything you
-send could be read back to you.
+anything identifying a person. This is a public page.
 
 ### Adding an event
 
-1. Add the name to `EVENTS` in `analytics.js`, don't inline a string.
-2. Push it with the `push()` helper so shape stays consistent.
-3. Build the Custom Event trigger and GA4 Event tag in GTM.
-4. Register any new parameter as a custom dimension in GA4 **before** you need
-   the data — it does not backfill.
+First ask whether GTM can trigger it from the DOM. If it can, build it there
+and add whatever `id` or `data-` attribute the trigger needs to the markup. Only
+if it genuinely can't — hover, timing, internal state — add it to
+`analytics.js`, then build the Custom Event trigger and register any new
+parameter as a GA4 custom dimension **before** you need the data.
 
-### Two implementation notes worth keeping
+### One implementation note worth keeping
 
-`section_view` uses a middle-band `rootMargin` rather than an intersection
-threshold. A tall section — the Work section is four case studies — never has
-40% of itself on screen at once, so a threshold-based observer never fires for
-it. This was a real bug, not a hypothetical one.
-
-Click tracking reads attributes via `.closest("a")`, not `event.target`. The
-thing physically clicked is often a child of the link, so reading straight off
-the target misses roughly half of real clicks and looks random rather than
-broken.
+Click tracking — wherever it lives — must resolve the link with `.closest("a")`
+rather than reading `event.target`. The element physically clicked is often a
+child of the link, so reading straight off the target misses roughly half of
+real clicks and looks random rather than broken. In GTM this is the reason to
+match the CSS selector `[data-btn-location], [data-btn-location] *` rather than
+the attribute alone.
 
 ---
 

@@ -58,49 +58,59 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKRQTNV"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="topbar">
-  <div class="wrap">
-    <p class="brand">Mary Hannah Hart</p>
-    <ul class="topnav">
-      <li><a id="nav-work" data-btn-location="topbar" href="#work">Work</a></li>
-      <li><a id="nav-visuals" data-btn-location="topbar" href="#visuals">Visuals</a></li>
-      <li><a id="nav-pipeline" data-btn-location="topbar" href="#pipeline">Method</a></li>
-      <li><a id="nav-cv" data-btn-location="topbar" href="#cv">R&eacute;sum&eacute;</a></li>
-      <li><a id="nav-certs" data-btn-location="topbar" href="#certs">Certifications</a></li>
-      <li><a id="nav-contact" data-btn-location="topbar" href="#contact">Contact</a></li>
+<div class="shell">
+
+<aside class="rail">
+  <div class="rail-id">
+    <p class="rail-name">Mary Hannah Hart</p>
+    <p class="rail-role">Data Analyst &middot; Madrid</p>
+  </div>
+
+  <nav class="rail-nav" aria-label="Sections">
+    <p class="rail-label">Sections</p>
+    <ul>
+      <li><a id="nav-work"     data-btn-location="rail" href="#work">Selected work</a></li>
+      <li><a id="nav-skills"   data-btn-location="rail" href="#skills">Skills</a></li>
+      <li><a id="nav-visuals"  data-btn-location="rail" href="#visuals">Visualization</a></li>
+      <li><a id="nav-pipeline" data-btn-location="rail" href="#pipeline">Method</a></li>
+      <li><a id="nav-cv"       data-btn-location="rail" href="#cv">R&eacute;sum&eacute;</a></li>
+      <li><a id="nav-certs"    data-btn-location="rail" href="#certs">Certifications</a></li>
+      <li><a id="nav-contact"  data-btn-location="rail" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="rail-nav">
+    <p class="rail-label">Elsewhere</p>
+    <ul class="rail-links">
+      <li><a class="rail-repo" id="cta-repo" data-btn-location="rail"
+             href="https://github.com/maryhannahhart/maryhannahhart.github.io">Source on GitHub &#8599;</a></li>
+      <li><a id="cta-linked-in" data-btn-location="rail"
+             href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a></li>
+      <li><a id="cta-email" data-btn-location="rail"
+             href="mailto:maryhannahhart12@gmail.com">Email</a></li>
     </ul>
   </div>
-</div>
+</aside>
 
-<div class="wrap">
+<main class="panel">
 
   <header class="hero">
-    <p class="eyebrow">Data Analyst &middot; Madrid</p>
-    <h1>I build the what your team teams run on.</h1>
+    <h1>I build the pipelines, models, and reporting that teams run on.</h1>
     <p class="lede">
       Six years across energy, retail, and e-commerce. My work sits between source systems and the
-      people who depend on them: <strong>moving data</strong> on a schedule, making it reliable, and
-      <strong>documenting</strong> it well enough that the next analyst doesn't have to ask me how it works.
+      people who depend on them: <strong>moving data on a schedule, making it reliable, and
+      documenting it well enough that the next analyst doesn't have to ask me how it works.</strong>
     </p>
-    <div class="herolinks">
-      <a class="btn primary" id="cta-email" data-btn-location="hero" href="mailto:maryhannahhart12@gmail.com">
-        maryhannahhart12@gmail.com
-      </a>
-      <a class="btn" id="cta-linked-in" data-btn-location="hero" href="https://www.linkedin.com/in/mary-hannah-hart">
-        LinkedIn
-      </a>
-      <a class="btn" id="cta-resume" data-btn-location="hero" href="#cv">R&eacute;sum&eacute;</a>
-    </div>
 
-    <div class="strip">
-      <div class="stat"><span class="n">6 yrs</span><span class="k">Analytics and reporting</span></div>
-      <div class="stat"><span class="n">8</span><span class="k">International markets supported</span></div>
-      <div class="stat"><span class="n">300+</span><span class="k">Weekly dashboard users</span></div>
-      <div class="stat"><span class="n">$24M</span><span class="k">Business value identified</span></div>
+    <div class="tiles">
+      <div class="tile"><span class="n">6 yrs</span><span class="k">Analytics and reporting</span></div>
+      <div class="tile"><span class="n">8</span><span class="k">International markets supported</span></div>
+      <div class="tile"><span class="n">300+</span><span class="k">Weekly dashboard users</span></div>
+      <div class="tile"><span class="n">$24M</span><span class="k">Business value identified</span></div>
     </div>
   </header>
 
-  <section id="work">
+<section id="work">
     <div class="sechead"><h2>Selected work</h2><span class="count">4 projects</span></div>
 
     <article class="case">
@@ -197,7 +207,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
   </section>
 
-  <section id="visuals">
+    <section id="skills">
+    <div class="sechead"><h2>Skills</h2><span class="count">the stack behind the work</span></div>
+<div class="skillgrid">
+      <div class="skillcard">
+        <h4>Data and ELT</h4>
+        <p>SQL (BigQuery, including CTEs, window functions, and nested data) &middot; Python (pandas, notebooks) &middot; data modeling &middot; transformation logic &middot; pipeline orchestration &middot; Firestore and NoSQL</p>
+      </div>
+      <div class="skillcard">
+        <h4>Microsoft and BI</h4>
+        <p>Power BI &middot; DAX &middot; Power Automate &middot; PowerApps &middot; SharePoint &middot; Tableau &middot; Looker Studio &middot; Amazon QuickSight</p>
+      </div>
+      <div class="skillcard">
+        <h4>Governance</h4>
+        <p>Data quality monitoring &middot; data dictionaries and technical documentation &middot; KPI definition &middot; access management &middot; GDPR-regulated environments</p>
+      </div>
+      <div class="skillcard">
+        <h4>Tracking and delivery</h4>
+        <p>GA4 &middot; Google Tag Manager &middot; Firebase &middot; JavaScript &middot; event taxonomy design &middot; Agile and Jira &middot; workshop facilitation &middot; technical training</p>
+      </div>
+    </div>
+
+    <div class="herolinks" style="margin-top:28px">
+      <a class="btn primary" id="cta-resume" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request" data-btn-location="request_resume">Request the full r&eacute;sum&eacute;</a>
+    </div>
+  </section>
+
+<section id="visuals">
     <div class="sechead"><h2>Data visualization</h2><span class="count">4 forms</span></div>
     <p class="intro">
       Choosing the right form is most of the work. Each of these charts answers a different kind of
@@ -300,28 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="skillgrid">
-      <div class="skillcard">
-        <h4>Data and ELT</h4>
-        <p>SQL (BigQuery, including CTEs, window functions, and nested data) &middot; Python (pandas, notebooks) &middot; data modeling &middot; transformation logic &middot; pipeline orchestration &middot; Firestore and NoSQL</p>
-      </div>
-      <div class="skillcard">
-        <h4>Microsoft and BI</h4>
-        <p>Power BI &middot; DAX &middot; Power Automate &middot; PowerApps &middot; SharePoint &middot; Tableau &middot; Looker Studio &middot; Amazon QuickSight</p>
-      </div>
-      <div class="skillcard">
-        <h4>Governance</h4>
-        <p>Data quality monitoring &middot; data dictionaries and technical documentation &middot; KPI definition &middot; access management &middot; GDPR-regulated environments</p>
-      </div>
-      <div class="skillcard">
-        <h4>Tracking and delivery</h4>
-        <p>GA4 &middot; Google Tag Manager &middot; Firebase &middot; JavaScript &middot; event taxonomy design &middot; Agile and Jira &middot; workshop facilitation &middot; technical training</p>
-      </div>
-    </div>
-
-    <div class="herolinks" style="margin-top:28px">
-      <a class="btn primary" id="cta-request-resume" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request">Request the full r&eacute;sum&eacute;</a>
-    </div>
+    
   </section>
 
   <section id="certs">
@@ -363,17 +378,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>I am looking for work where the data platform is treated as core infrastructure rather than a
     reporting afterthought, and where getting the numbers right matters.</p>
     <div class="contactlinks">
-      <a class="btn primary" id="cta-email" data-btn-location="footer" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
+      <a class="btn primary" id="cta-email" data-btn-location="contactlinks" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
       <a class="btn"
-      id="cta-linked-in" data-btn-location="footer" href="https://www.linkedin.com/in/mary-hannah-hart"
+      id="cta-linked-in" data-btn-location="contactlinks" href="https://www.linkedin.com/in/mary-hannah-hart"
       target="_blank"
       rel="noopener">linkedin.com/in/mary-hannah-hart</a>
     </div>
     <p class="consent-reopen-wrap">
-      <button type="button" class="consent-link" id="consent-reopen">Cookie settings</button>
+      <button type="button" class="consent-link" id="consent-reopen" data-btn-location="footer">Cookie settings</button>
     </p>
   </footer>
-
+</main>
 </div>
 
 <div class="consent" id="consent-bar" role="region" aria-label="Analytics consent" hidden>
