@@ -63,44 +63,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <aside class="rail">
   <div class="rail-id">
     <p class="rail-name">Mary Hannah Hart</p>
-    <p class="rail-role">Data Analyst &middot; Madrid</p>
+    <p class="rail-role">Data Analyst &middot; Open to Moving</p>
   </div>
 
   <nav class="rail-nav" aria-label="Sections">
     <p class="rail-label">Sections</p>
     <ul>
-      <li><a id="nav-work"     data-btn-location="rail" href="#work">Selected work</a></li>
-      <li><a id="nav-skills"   data-btn-location="rail" href="#skills">Skills</a></li>
-      <li><a id="nav-visuals"  data-btn-location="rail" href="#visuals">Visualization</a></li>
-      <li><a id="nav-pipeline" data-btn-location="rail" href="#pipeline">Method</a></li>
-      <li><a id="nav-cv"       data-btn-location="rail" href="#cv">R&eacute;sum&eacute;</a></li>
-      <li><a id="nav-certs"    data-btn-location="rail" href="#certs">Certifications</a></li>
-      <li><a id="nav-contact"  data-btn-location="rail" href="#contact">Contact</a></li>
+      <li><a id="nav-work"     data-btn-location="rail" data-event-label="work" data-trigger="button_click"
+              href="#work">Selected work</a></li>
+      <li><a id="nav-skills"   data-btn-location="rail" data-event-label="skills" data-trigger="button_click"
+              href="#skills">Skills</a></li>
+      <li><a id="nav-visuals"  data-btn-location="rail" data-event-label="visualizations" data-trigger="button_click"
+              href="#visuals">Visualization</a></li>
+      <li><a id="nav-pipeline" data-btn-location="rail" data-event-label="method" data-trigger="button_click"
+              href="#pipeline">Method</a></li>
+      <li><a id="nav-cv"       data-btn-location="rail" data-event-label="resume" data-trigger="button_click"
+              href="#cv">R&eacute;sum&eacute;</a></li>
+      <li><a id="nav-certs"    data-btn-location="rail" data-event-label="certifications" data-trigger="button_click"
+              href="#certs">Certifications</a></li>
+      <li><a id="nav-contact"  data-btn-location="rail" data-event-label="contact" data-trigger="button_click"
+              href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <div class="rail-nav">
     <p class="rail-label">Elsewhere</p>
     <ul class="rail-links">
-      <li><a class="rail-repo" id="cta-repo" data-btn-location="rail"
-             href="https://github.com/maryhannahhart/maryhannahhart.github.io">Source on GitHub &#8599;</a></li>
-      <li><a id="cta-linked-in" data-btn-location="rail"
-             href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a></li>
-      <li><a id="cta-email" data-btn-location="rail"
+      <li><a id="cta-email" data-btn-location="rail" data-event-label="email" data-trigger="button_click"
              href="mailto:maryhannahhart12@gmail.com">Email</a></li>
+      <li><a id="cta-linked-in" data-btn-location="rail" data-event-label="linkedin" data-trigger="button_click"
+             href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a></li>
+      <li><a class="rail-repo" id="cta-repo" data-btn-location="rail" data-event-label="github" data-trigger="button_click"
+             href="https://github.com/maryhannahhart/maryhannahhart.github.io">GitHub &#8599;</a></li>
     </ul>
+
+    <a class="rail-download" id="cta-download-cv-rail" data-btn-location="rail"
+       data-event-label="cv_download" data-trigger="button_click"
+       href="Mary_Hannah_Hart_CV.pdf" download="Mary_Hannah_Hart_CV.pdf">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download CV
+    </a>
   </div>
 </aside>
 
 <main class="panel">
 
   <header class="hero">
-    <h1>I build the pipelines, models, and reporting that teams run on.</h1>
+    <h1>I build the reports your team runs on.</h1>
     <p class="lede">
-      Six years across energy, retail, and e-commerce. My work sits between source systems and the
-      people who depend on them: <strong>moving data on a schedule, making it reliable, and
-      documenting it well enough that the next analyst doesn't have to ask me how it works.</strong>
+      Six years across energy, retail, and ecommerce. My work sits between source systems and the
+      people who depend on them: moving data  <strong>quickly</strong>, making it <strong>reliable</strong>, and
+      <strong>documenting</strong> it.
     </p>
+
+    <div class="herolinks">
+      <a class="btn primary" id="cta-email" data-btn-location="hero" data-event-label="email" data-trigger="button_click"
+         href="mailto:maryhannahhart12@gmail.com">Email</a>
+      <a class="btn" id="cta-linked-in" data-btn-location="hero" data-event-label="linkedin" data-trigger="button_click"
+         href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a>
+      <a class="btn" id="cta-repo" data-btn-location="hero" data-event-label="github" data-trigger="button_click"
+         href="https://github.com/maryhannahhart/maryhannahhart.github.io">GitHub</a>
+    </div>
 
     <div class="tiles">
       <div class="tile"><span class="n">6 yrs</span><span class="k">Analytics and reporting</span></div>
@@ -123,7 +151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
           <div class="beat"><h4>The problem</h4><p>The weekly OKR pack was assembled by hand every Monday. Someone exported tickets from Jira, pasted them into a workbook, reconciled the totals against the warehouse, and rebuilt the charts. It took most of a morning, it broke whenever a field was renamed upstream, and it only ran if one particular laptop happened to be switched on.</p></div>
           <div class="beat"><h4>What I built</h4><p>An ELT chain with no manual step in the middle. The Jira export lands in cloud storage, an external table exposes it to the warehouse without a load job, and a parameterized notebook handles the transformation and joins it to delivery data. The whole run is scheduled and alerts on failure. I made it idempotent, so re-running a bad week repairs the data instead of double-counting it.</p></div>
-          <div class="beat"><h4>What changed</h4><p>Six hours down to nine minutes. The report has landed on time for eighteen consecutive weeks, including two when I was on leave.</p></div>
+          <div class="beat"><h4>What changed</h4><p>Six hours down to completely automated The report has landed on time for eighteen consecutive weeks, including two when I was on leave.</p></div>
           <div class="chips"><span class="chip">BigQuery</span><span class="chip">Python</span><span class="chip">External tables</span><span class="chip">Scheduled runs</span><span class="chip">Power Automate</span><span class="chip">Jira</span></div>
         </div>
         <figure>
@@ -229,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="herolinks" style="margin-top:28px">
-      <a class="btn primary" id="cta-resume" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request" data-btn-location="request_resume">Request the full r&eacute;sum&eacute;</a>
+      <a class="btn primary" id="cta-request-resume" data-btn-location="cv" data-event-label="resume_request" data-trigger="button_click" href="mailto:maryhannahhart12@gmail.com?subject=CV%20request">Request the full r&eacute;sum&eacute;</a>
     </div>
   </section>
 
@@ -378,14 +406,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>I am looking for work where the data platform is treated as core infrastructure rather than a
     reporting afterthought, and where getting the numbers right matters.</p>
     <div class="contactlinks">
-      <a class="btn primary" id="cta-email" data-btn-location="contactlinks" href="mailto:maryhannahhart12@gmail.com">maryhannahhart12@gmail.com</a>
-      <a class="btn"
-      id="cta-linked-in" data-btn-location="contactlinks" href="https://www.linkedin.com/in/mary-hannah-hart"
-      target="_blank"
-      rel="noopener">linkedin.com/in/mary-hannah-hart</a>
+      <a class="btn primary" id="cta-email" data-btn-location="footer" data-event-label="email" data-trigger="button_click"
+         href="mailto:maryhannahhart12@gmail.com">Email</a>
+      <a class="btn" id="cta-linked" data-btn-location="footer" data-event-label="linkedin" data-trigger="button_click"
+         href="https://www.linkedin.com/in/mary-hannah-hart">LinkedIn</a>
+      <a class="btn" id="cta-repo" data-btn-location="footer" data-event-label="github" data-trigger="button_click"
+         href="https://github.com/maryhannahhart/maryhannahhart.github.io">GitHub</a>
+      <a class="btn" id="cta-download-cv" data-btn-location="footer" data-event-label="cv_download" data-trigger="button_click"
+         href="Mary_Hannah_Hart_CV.pdf" download="Mary_Hannah_Hart_CV.pdf">Download CV</a>
     </div>
     <p class="consent-reopen-wrap">
-      <button type="button" class="consent-link" id="consent-reopen" data-btn-location="footer">Cookie settings</button>
+      <button type="button"data-btn-location="footer" data-event-label="consent_review" data-trigger="button_click" class="consent-link" id="consent-reopen">Cookie settings</button>
     </p>
   </footer>
 </main>

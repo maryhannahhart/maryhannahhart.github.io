@@ -88,16 +88,67 @@ if two things are both primary, neither is.
    href="mailto:...">maryhannahhart12@gmail.com</a>
 ```
 
-**Attribute rules:**
+**Attribute rules.** Every `nav-*` and `cta-*` link carries all four:
 
-- `id` — unique across the whole page. Pattern: `cta-<what>-<where>` or
-  `nav-<target>`. Two buttons doing the same job in different places get
-  different ids (`cta-email-hero`, `cta-email-footer`), never the same one.
-- `data-btn-location` — which region of the page it sits in. Custom attributes
-  must carry the `data-` prefix: anything else is invalid HTML and won't appear
-  in `element.dataset`.
-- No `target="_blank"` in the markup. `site.js` applies it to external links
-  automatically, so a link added later is covered without you remembering.
+```html
+<a class="btn primary"
+   id="cta-email-hero"
+   data-btn-location="hero"
+   data-event-label="email"
+   data-trigger="button_click"
+   href="mailto:...">Email</a>
+```
+
+- `id` — unique across the page. `cta-<what>-<where>` or `nav-<target>`. The
+  same action in two places gets two ids (`cta-email-hero`, `cta-email-footer`).
+- `data-btn-location` — which region it sits in: `rail`, `hero`, `footer`, `cv`.
+- `data-event-label` — what is being clicked, one lower_snake_case word from the
+  fixed list below. Not the visible text, which changes; the label should not.
+- `data-trigger` — always `button_click`. It is what the GTM trigger matches on,
+  so a new button is tracked the moment it carries the attribute, with no
+  container change.
+
+Everything is `data-` prefixed. A bare `eventlabel` or `trigger` is invalid HTML
+and never appears in `element.dataset`.
+
+**The label vocabulary** — reuse these, don't invent near-duplicates:
+
+`work` · `skills` · `visualizations` · `method` · `resume` · `certifications` ·
+`contact` · `email` · `linkedin` · `github` · `cv_download` · `resume_request`
+
+**Contact order is fixed everywhere**: email, then LinkedIn, then GitHub. Rail,
+hero and footer all follow it, so the page never reorders itself on a visitor.
+
+**The CV** is `Mary_Hannah_Hart_CV.pdf` at the site root, linked with the
+`download` attribute from the rail and the footer. Replacing it means dropping a
+new PDF at that exact filename — no markup change.
+
+**No `target="_blank"` in the markup.** `site.js` applies it to external links,
+so anything added later is covered.
+
+### The GTM trigger for all of this
+
+One Click trigger covers every button: **Click → All Elements**, fire on *Some
+Clicks*, where `Click Element` **matches CSS selector**
+`[data-trigger="button_click"], [data-trigger="button_click"] *`.
+
+The trailing ` *` is not optional — the element physically clicked is often a
+child of the link (the SVG inside Download CV, for instance), and matching only
+the attribute drops those clicks silently.
+
+Read the label with a Custom JavaScript variable, not an Auto-Event Variable:
+
+```javascript
+function() {
+  var el = {{Click Element}};
+  if (!el || !el.closest) return undefined;
+  var t = el.closest('[data-event-label]');
+  return t ? t.getAttribute('data-event-label') : undefined;
+}
+```
+
+Same shape for `data-btn-location`. Auto-Event Variables read only the clicked
+element and miss the child case.
 
 ## Event naming
 
